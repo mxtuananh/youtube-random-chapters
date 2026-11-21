@@ -1,28 +1,28 @@
 # Random YouTube Chapters
 
-Tiện ích Chrome MV3 thêm nút bật/tắt phát ngẫu nhiên cạnh nút View chapters trong trình phát YouTube. Bật tính năng cho video hiện tại bằng nút Random trong menu tiện ích hoặc nút bên cạnh chapter. Trạng thái bật/tắt được lưu riêng theo video và mặc định tắt.
+A Chrome MV3 extension that adds a random-play toggle next to YouTube's View chapters button. Enable the feature for the current video with the Random button in the extension menu or the button beside the chapters. The enabled state is stored separately for each video and is off by default.
 
-## Cài đặt
+## Installation
 
-1. Mở `chrome://extensions` trong Chrome.
-2. Bật **Developer mode**.
-3. Chọn **Load unpacked** và chọn thư mục dự án này.
-4. Tải lại trang xem YouTube đang mở.
+1. Open `chrome://extensions` in Chrome.
+2. Turn on **Developer mode**.
+3. Select **Load unpacked** and choose this project folder.
+4. Reload any open YouTube watch page.
 
-## Cách hoạt động và giới hạn
+## Behavior and limitations
 
-- Hỗ trợ trang video thông thường dạng `youtube.com/watch?v=...`.
-- Đọc chapter marker có sẵn trong dữ liệu trình phát của YouTube; dùng DOM của danh sách chương làm phương án dự phòng. Tiện ích không gửi yêu cầu mạng và không tự mở bảng chương.
-- Mỗi lần phát video, tiện ích ghi nhớ các chapter đã bắt đầu phát trong phiên trang hiện tại. Lịch sử giữ nguyên khi chuyển video bằng điều hướng bên trong YouTube, nhưng bắt đầu lại sau khi tải lại trang.
-- Mặc định, chapter đã phát sẽ được bỏ qua cho đến khi mọi chapter khác đã phát; sau đó tiện ích tự bắt đầu lượt mới. Có thể bật **Cho phép phát lại chapter đã phát** trong menu tiện ích để cho phép lặp sớm. Đây là tùy chọn chung cho tiện ích và được lưu lại. Chapter vừa kết thúc luôn bị loại khỏi lựa chọn kế tiếp.
-- Khi người dùng tự tua, tiện ích không kích hoạt nhảy ngẫu nhiên. Chapter được tính là đã phát khi video thực sự bắt đầu hoặc tiếp tục phát tại chapter đó.
-- Video có ít hơn hai chapter được phát hiện sẽ không tự nhảy.
-- YouTube có thể thay đổi cấu trúc dữ liệu trình phát; nếu trang không cung cấp dữ liệu chapter, tiện ích có thể không phát hiện được chapter.
+- Supports standard video pages in the `youtube.com/watch?v=...` format.
+- Reads available chapter markers from YouTube's player data, with the chapter list DOM as a fallback. The extension makes no network requests and does not open the chapter panel automatically.
+- During each playback, the extension tracks which chapters have started playing in the current page session. This history is preserved when navigating between videos within YouTube, but resets when the page is reloaded.
+- By default, a chapter that has played is skipped until every other chapter has played; then the extension starts a new round automatically. Enable **Allow replaying played chapters** in the extension menu to allow earlier repeats. This option applies globally to the extension and is saved. The chapter that just ended is always excluded from the next selection.
+- Manually seeking does not trigger a random jump. A chapter counts as played when the video actually starts or resumes playback at that chapter.
+- Videos with fewer than two detected chapters are not skipped automatically.
+- YouTube may change its player data structure. If the page does not provide chapter data, the extension may not detect chapters.
 
-## Kiểm tra utility
+## Run utility tests
 
-Chạy `node --test tests/chapter-utils.test.cjs` bằng Node.js.
+Run `node --test tests/chapter-utils.test.cjs` with Node.js.
 
-## Cập nhật tiện ích
+## Updating the extension
 
-Sau khi cập nhật các tệp tiện ích, mở `chrome://extensions` và nhấn **Reload** tại tiện ích này. Sau đó tải lại trang xem YouTube.
+After updating the extension files, open `chrome://extensions` and select **Reload** for this extension. Then reload the YouTube watch page.
