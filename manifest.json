@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Random YouTube Chapters",
+  "version": "1.0.0",
+  "description": "Jump to a different YouTube chapter when the current chapter ends.",
+  "permissions": ["storage"],
+  "action": { "default_popup": "popup.html" },
+  "host_permissions": ["https://www.youtube.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["chapter-utils.js", "page-bridge.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["chapter-utils.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

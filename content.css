@@ -1,0 +1,43 @@
+.random-chapters-toggle {
+  align-items: center;
+  box-sizing: border-box;
+  background: var(--random-chapters-background, transparent);
+  background-image: var(--random-chapters-background-image, none);
+  backdrop-filter: var(--random-chapters-backdrop-filter, none);
+  border: var(--random-chapters-border, 0);
+  border-radius: var(--random-chapters-border-radius, 0);
+  box-shadow: var(--random-chapters-box-shadow, none);
+  color: var(--random-chapters-color, inherit);
+  cursor: pointer;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-family: var(--random-chapters-font-family, inherit);
+  font-size: var(--random-chapters-font-size, inherit);
+  font-style: var(--random-chapters-font-style, normal);
+  font-weight: var(--random-chapters-font-weight, inherit);
+  height: var(--random-chapters-height, 100%);
+  justify-content: center;
+  line-height: var(--random-chapters-line-height, inherit);
+  letter-spacing: var(--random-chapters-letter-spacing, normal);
+  margin: 0 4px;
+  opacity: var(--random-chapters-opacity, 1);
+  padding: var(--random-chapters-padding-top, 0) var(--random-chapters-padding-right, 0)
+    var(--random-chapters-padding-bottom, 0) var(--random-chapters-padding-left, 0);
+  position: relative;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-shadow: var(--random-chapters-text-shadow, none);
+  z-index: 1;
+}
+
+[data-random-chapters-placement="player"] {
+  align-self: center;
+}
+
+.random-chapters-status.is-enabled {
+  font-weight: 700;
+}
+
+.random-chapters-prefix {
+  white-space: pre;
+}
